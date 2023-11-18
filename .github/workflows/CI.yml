@@ -47,14 +47,6 @@ jobs:
       - name: Create config.py
         run: |
           echo ${{ secrets.TOKEN }} > config.py
-      
-      
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, world!
-
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
+      - name: Test with pytest
         run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+          pytest --cov=src --cov=main tests/ --cov-fail-under=75
